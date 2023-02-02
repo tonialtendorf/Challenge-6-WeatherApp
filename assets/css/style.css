@@ -1,7 +1,5 @@
-body {
- background-color: #87CEEB;
-}
-/*header*/
+
+/*header
 header {
     padding: 50px;
     text-align: center;
@@ -16,8 +14,8 @@ h1 {
 header p {
     font-size: 25px;
 }
-
-/*search section*/
+*/
+/*search section
 .container-search {
     float: left;
     margin-left: 50px;
@@ -33,28 +31,52 @@ input[type="text"] {
     text-align: center;
 }
 
+*/
+/*current Weather Container 
+.currentWeather {
+    position: absolute;
+    margin-left: 30%;
+    border: 5px solid black;
+    height: 400px;
+    width: 500px;
+    background-color: white;
+}
 
+.currentWeather h2 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.currentWeather h3 {
+    text-align: center;
+    font-size: 40px;
+}
+
+*/
+/* 5day weather forecast container 
 .weatherContainer {
     margin: auto;
     margin-top: -15px;
     height: 400px; 
     width: 1600px;
     background-color: white;
-  
 
 }
 
+#Para1 {
+    text-align: center;
+   font-size: 30px;
+}
 
 #weatherContainer{
     position: absolute;
-    top: 80%;
+    top: 100%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
     height: 600px;
     width: 1300px;
     border: 5px solid rgba(97, 95, 95, 0.829);
-    border-radius: 10px;
 }
 
 #iconsContainer{
@@ -65,8 +87,6 @@ input[type="text"] {
     transform: translate(-50%, -50%);
     height: 500px;
     width: 1200px;
-    border: 5px solid rgb(31, 82, 82);
-    border-radius: 10px;
 }
 
 .icons{
@@ -78,10 +98,7 @@ input[type="text"] {
     border-radius: 10px;
 }
 
-.image{
-    height: 140px;
-    width: 100%;
-}
+
 
 .imgClass{
     height: 140px;
@@ -115,4 +132,7 @@ input[type="text"] {
     margin: 0;
     margin-bottom: 5px;
     margin-left: 5px;
+    font-size: 15px;
 }
+
+*/
