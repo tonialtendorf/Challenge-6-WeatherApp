@@ -15,81 +15,6 @@
 
 <body>
   
-
-    <!--search section
-    <div class="container-search" id="search">
-        <h2>Search for a city</h2>
-        <section class="inputs">
-            <p id="inputContainer"><input type="text" placeholder="Enter City" id="cityInput"></p>
-            <button type="button" onclick="GetInfo()">Search</button>
-        </section>
-    </div>
-    -->
-<!--
-    <section class="currentWeather">
-        <h2>Current Weather For:</h2>
-        <h3 id="cityName"></h3>
-    
-        <p class="weather" id="day1"></p>
-        <div class="image"><img src="./assets/images/imageplaceholder.jpg" class="imgClass" id="img1"></div>
-        <p class="minValues" id="day1Min"></p>
-        <p class="maxValues" id="day1Max"></p>
-        <p class="HumidityValues" id="day1Humidity"></p>
-        <p class="windValues" id="day1Wind"></p>
-    </section>
-
-
-    weather section
-    <section class="weatherContainer" id="weatherContainer">
-        <h1 id="Para1"> 5 Day Weather Forecast</h1>
-        <div id="iconsContainer">
-
-            <div class="icons">
-                <p class="weather" id="day2"></p>
-                <div class="image"><img src="./assets/images/imageplaceholder.jpg" class="imgClass" id="img2"></div>
-                <p class="minValues" id="day2Min"></p>
-                <p class="maxValues" id="day2Max"></p>
-                <p class="HumidityValues" id="day2Humidity"></p>
-                <p class="windValues" id="day2Wind"></p>
-            </div>
-            <div class="icons">
-                <p class="weather" id="day3"></p>
-                <div class="image"><img src="./assets/images/imageplaceholder.jpg" class="imgClass" id="img3"></div>
-                <p class="minValues" id="day3Min"></p>
-                <p class="maxValues" id="day3Max"></p>
-                <p class="HumidityValues" id="day3Humidity"></p>
-                <p class="windValues" id="day3Wind"></p>
-            </div>
-            <div class="icons">
-                <p class="weather" id="day4"></p>
-                <div class="image"><img src="./assets/images/imageplaceholder.jpg" class="imgClass" id="img4"></div>
-                <p class="minValues" id="day4Min"></p>
-                <p class="maxValues" id="day4Max"></p>
-                <p class="HumidityValues" id="day4Humidity"></p>
-                <p class="windValues" id="day4Wind"></p>
-            </div>
-            <div class="icons">
-                <p class="weather" id="day5"></p>
-                <div class="image"><img src="./assets/images/imageplaceholder.jpg" class="imgClass" id="img5"></div>
-                <p class="minValues" id="day5Min"></p>
-                <p class="maxValues" id="day5Max"></p>
-                <p class="HumidityValues" id="day5Humidity"></p>
-                <p class="windValues" id="day5Wind"></p>
-            </div>
-            <div class="icons">
-                <p class="weather" id="day6"></p>
-                <div class="image"><img src="./assets/images/imageplaceholder.jpg" class="imgClass" id="img6"></div>
-                <p class="minValues" id="day6Min"></p>
-                <p class="maxValues" id="day6Max"></p>
-                <p class="HumidityValues" id="day6Humidity"></p>
-                <p class="windValues" id="day6Wind"></p>
-            </div>
-        </div>
-
--->
-
-
-
 <div class="flex flex-col items-center justify-center w-screen min-h-screen text-gray-700 p-10 bg-gradient-to-br from-blue-200 via-gray-200 to-blue-200">
 
 	<!-- Today's Weather-->
@@ -97,29 +22,36 @@
     <p class="text-2xl">Input a city in the search bar below to view the current and upcoming weather forecast</p>
 		
 	
-	<div class="flex flex-col space-y-6 w-full max-w-screen-sm bg-white p-10 mt-10 rounded-xl ring-8 ring-white ring-opacity-40">
+	<div class="flex flex-col space-y-6 items-center w-full max-w-screen-md bg-white p-10 mt-10 rounded-xl ring-8 ring-white ring-opacity-40">
 		<div class="flex justify-between items-center">
-            <div class="container-search" id="search">
-                <section class="inputs">
-                
-                </section>
-            </div>			
-            <p id="inputContainer"><input type="text" class= "border border-blue-200 font-semibold text-lg" placeholder="Enter City" id="cityInput"></p>
-
-			<button type="button" class="btn font-semibold text-lg w-1/4 hover:bg-blue-200 border border-blue-200 text-right rounded" onclick="GetInfo()">Search</button>
+            <div class="container-search flex justify-between items-center" id="form">
+                <p id="inputContainer"><input type="text" class= "border border-blue-200 font-semibold text-lg" placeholder="Enter City" id="cityInput"></p>
+                <button type="button" class="btn font-semibold text-lg w-1/4 hover:bg-blue-200 border border-blue-200 text-right rounded">Search</button>
+            </div>	
         </div>
-            <legend>Local Storage</legend>
-            <div class="lsOutput"></div>
+           <!--Recent Searches-->
+            <div class="container">             
+     
+                <!--<form class="form-inline" id="form">-->
+                <h2 style="font-size: 20px; padding: 1rem;">Recent Searches</h2>
+                <ul class="list-group list-group-flush" id="ul">
+              
+                </ul>
+                <button type="button" id="delete" class="border border-blue-200 font-semibold text-lg px-4 rounded" style="display: block;margin: 1rem auto;">Delete Searches</button>
+               
+              
+            </div>
 
 		
 		
-		<div class=" w-full max-w-screen-sm bg-white p-10 rounded-xl ring-8 ring-black ring-opacity-40">
+		<div class="box w-full max-w-screen-sm bg-white p-10 rounded-xl ring-8 ring-black ring-opacity-40">
             <div class="flex flex-col justify-between currentWeather">
                 
                 <!-- Todays City/Min/Max Output-->
                 <div class="flex flex-col">
-                    <span class="hidden weather" id="day1"></span>
+                   
                     <span id="cityName" class="font-bold text-6xl text-gray-500"></span>
+                    <span class="weather font-semibold text-lg" id="day1"></span>
                     <span class="minValues" id="day1Min"></span>
                     <span class="maxValues" id="day1Max"></span>
                     <span class="HumidityValues" id="day1Humidity"></span>
@@ -177,6 +109,10 @@
                     <p class="windValues" id="day6Wind">Wind</p>
                 </div>
             </div>
+
+
+            <!--test-->
+           
 	</div>
 	
 </div>

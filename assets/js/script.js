@@ -6,7 +6,6 @@ function GetInfo(){
 
 
 
-
 //API 5 day weather input
 fetch('https://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appid=f1ababfab952dd503c1fa036d5b7873a')
 .then(response => response.json())
@@ -15,20 +14,20 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appi
 
     //pulling min temp
     for(i=0; i<6; i++){
-        document.getElementById("day" +(i+1)+ "Min").innerHTML ="Min: " + Number(data.list[i].main.temp_min).toFixed(1)+"°";
+        document.getElementById("day" +(i+1)+ "Min").innerHTML ="Min: " + Number(data.list[i].main.temp -273.15).toFixed(1)+"°C";
     }
 
     //pulling max temp
     for(i=0; i<6; i++){
-        document.getElementById("day" +(i+1)+ "Max").innerHTML ="Max: " + Number(data.list[i].main.temp_max).toFixed(1)+"°";
+        document.getElementById("day" +(i+1)+ "Max").innerHTML ="Max: " + Number(data.list[i].main.temp_max -273.15).toFixed(1)+"°C";
     }
      //pulling humidity
      for(i=0; i<6; i++){
-        document.getElementById("day" +(i+1)+ "Humidity").innerHTML ="Humidity: " + Number(data.list[i].main.humidity);
+        document.getElementById("day" +(i+1)+ "Humidity").innerHTML ="Humidity: " + Number(data.list[i].main.humidity)+"%";
      }
       //pulling wind speed
     for(i=0; i<6; i++){
-       document.getElementById("day" +(i+1)+ "Wind").innerHTML ="Wind: " + Number(data.list[i].wind.speed);
+       document.getElementById("day" +(i+1)+ "Wind").innerHTML ="Wind: " + Number(data.list[i].wind.speed)+"mph";
     }
 
     //pulling weather icon
@@ -61,90 +60,77 @@ for(i=0; i < 6; i++){
     document.getElementById("day"+(i+1)).innerHTML = weekday[CheckDay(i)];
 }
 
+const btn = document.querySelector('.btn');
+const box = document.querySelector('.box');
+const history = document.querySelector('.history');
+
+btn.addEventListener('click', function() {
+    GetInfo();
+    box.classList.remove('hidden');
+//    history.classList.remove('hidden');
+
+})
+
+
 
 //localStorage
-/*
+const form = document.querySelector("#form");
+const searchBar = document.querySelector("#cityInput");
+const submitButton = document.querySelector(".btn");
+const deleteButton = document.querySelector("#delete");
+const ul = document.querySelector("#ul");
+let recentSearches;
 
-const btn = document.querySelector('.btn');
-const searchCity = document.getElementById('inputContainer');
-const lsOutput = document.querySelector(".lsOutput");
-
-btn.onclick = function() {
-    const key = searchCity.value;
-    console.log(key);
-
-    if (key) {
-        localStorage.setItem(key);
-        location.reload();
+if (localStorage.recentSearches && localStorage.recentSearches != "") {
+    recentSearches = JSON.parse(localStorage.recentSearches);
+  } else {
+    recentSearches = [];
+  }
+  
+  const makeListItem = (text, parent) => {
+    let listItem = document.createElement("li");
+    listItem.textContent = text;
+    listItem.className = "list-group-item";
+    parent.appendChild(listItem);
+  };
+  
+  recentSearches.forEach(element => {
+    makeListItem(element, ul);
+  });
+  
+  const isDuplicateValue = (arr, text) => {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] == text) {
+        return true;
+      }
     }
-};
+  
+    return false;
+  };
 
-
-for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    const value = localStorage.getItem(key);
-    //const value = localStorage.getItem(key);
-    
-    lsOutput.innerHTML += `${key}: ${value}<br />`;
-}
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-//variables
-const APIKey = "eb23e19b9a1a5041787f2931574a32f1"
-var cityInput = document.querySelector('#cityInput');
-var submitBtn = document.querySelector('#search');
-var city = document.querySelector('#cityOutput');
-var state;
-var country;
-
-//var queryURL = 'http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid" + APIKey';
-//var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q={city name}&appid={APIKey}";
-
-
-//city search button outputs weather
-submitBtn.addEventListener('click', function() {
-    let response = fetch('http://api.openweathermap.org/data/2.5/forecast?id=524901&appid={APIKey}')
-    .then(response => response.json())
-    console.log(response)
-    //.then(data => {
-   submitBtn.addEventListener("click", function() {
-    let response = fetch ('"https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&appid=" + APIKey')
-    .then(response => response.json())  
-    console.log(response)  
-    
-}) 
-    })
-//}
-//)
-*/
+  form.addEventListener("click", event => {
+    event.preventDefault();
+    if (
+      searchBar.value == "" ||
+      isDuplicateValue(recentSearches, searchBar.value)
+    ) {
+      return;
+    } else {
+      recentSearches.push(searchBar.value);
+      makeListItem(searchBar.value, ul);
+      localStorage.recentSearches = JSON.stringify(recentSearches);
+      searchBar.value = "";
+    }
+  });
+  
+  deleteButton.addEventListener("click", () => {
+    localStorage.clear();
+    recentSearches = [];
+    searchBar.value = "";
+    // I use querySelectorAll because it returns a static collection
+    let arr = document.querySelectorAll("li");
+    // I use the static collection for iteration
+    for (let i = 0; i < arr.length; i++) {
+      arr[i].remove();
+    }
+  });
