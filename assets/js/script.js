@@ -43,7 +43,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appi
 .catch(err => alert("Something Went Wrong"))
 }
 
-//array for days of week for 5 day weather
+//array for days of week 
 const d = new Date();
 const weekday =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -60,6 +60,7 @@ for(i=0; i < 6; i++){
     document.getElementById("day"+(i+1)).innerHTML = weekday[CheckDay(i)];
 }
 
+//event listener for search button
 const btn = document.querySelector('.btn');
 const box = document.querySelector('.box');
 const history = document.querySelector('.history');
@@ -67,11 +68,7 @@ const history = document.querySelector('.history');
 btn.addEventListener('click', function() {
     GetInfo();
     box.classList.remove('hidden');
-//    history.classList.remove('hidden');
-
 })
-
-
 
 //localStorage
 const form = document.querySelector("#form");
@@ -127,10 +124,19 @@ if (localStorage.recentSearches && localStorage.recentSearches != "") {
     localStorage.clear();
     recentSearches = [];
     searchBar.value = "";
-    // I use querySelectorAll because it returns a static collection
+
     let arr = document.querySelectorAll("li");
-    // I use the static collection for iteration
-    for (let i = 0; i < arr.length; i++) {
+for (let i = 0; i < arr.length; i++) {
       arr[i].remove();
     }
   });
+
+
+
+  //add event listener to search history item
+  ul.addEventListener('click', function(event){
+    event.preventDefault();
+    cityInput.style.display.inline
+     document.getElementById("cityName").value =  event.target.id;
+     
+});

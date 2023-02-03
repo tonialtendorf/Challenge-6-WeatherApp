@@ -25,26 +25,24 @@
 	<div class="flex flex-col space-y-6 items-center w-full max-w-screen-md bg-white p-10 mt-10 rounded-xl ring-8 ring-white ring-opacity-40">
 		<div class="flex justify-between items-center">
             <div class="container-search flex justify-between items-center" id="form">
-                <p id="inputContainer"><input type="text" class= "border border-blue-200 font-semibold text-lg" placeholder="Enter City" id="cityInput"></p>
-                <button type="button" class="btn font-semibold text-lg w-1/4 hover:bg-blue-200 border border-blue-200 text-right rounded">Search</button>
-            </div>	
+                <p id="inputContainer"><input type="text" class= "border border-blue-200 font-semibold text-lg p-2 text-sm text-gray-900  bg-gray-50 rounded " placeholder="Enter City" id="cityInput"></p>
+
+                <button type="button" class="btn font-semibold text-sm w-1/4 hover:bg-blue-200 border border-blue-200 text-right rounded ml-2 py-2 
+                ">Search</button>
+             
+            </div>
         </div>
            <!--Recent Searches-->
             <div class="container">             
-     
-                <!--<form class="form-inline" id="form">-->
-                <h2 style="font-size: 20px; padding: 1rem;">Recent Searches</h2>
-                <ul class="list-group list-group-flush" id="ul">
-              
+                <h2 class="text-sm">Recent Searches</h2>
+                <ul class="list-group list-group-flush text-lg" id="ul">
                 </ul>
-                <button type="button" id="delete" class="border border-blue-200 font-semibold text-lg px-4 rounded" style="display: block;margin: 1rem auto;">Delete Searches</button>
-               
-              
+                <button type="button" id="delete" class="border border-blue-200 font-semibold text-sm px-3 rounded mt-3">Clear Searches</button>
             </div>
 
+	</div>
 		
-		
-		<div class="box w-full max-w-screen-sm bg-white p-10 rounded-xl ring-8 ring-black ring-opacity-40">
+		<div class="hidden box w-full max-w-screen-sm bg-white p-10 rounded-xl ring-8 ring-black ring-opacity-40 mt-5">
             <div class="flex flex-col justify-between currentWeather">
                 
                 <!-- Todays City/Min/Max Output-->
@@ -57,7 +55,7 @@
                     <span class="HumidityValues" id="day1Humidity"></span>
                     <span class="windValues" id="day1Wind"></span>
                 </div>
-                <div class="image h-24 w-24 fill-current text-yellow-400" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"><img src="" class="imgClass" id="img1"></div>
+                <div class="image h-24 w-24 fill-current"><img src="" class="imgClass" id="img1"></div>
         </div>        
     
             <!--5 Day Forecast-->
@@ -66,7 +64,7 @@
                 <!--Day 2-->
                 <div class="flex flex-col items-center">
                     <p class="weather font-semibold text-lg" id="day2"></p>
-                    <div class="h-10 w-10 fill-current text-gray-400 mt-3" height="30" viewBox="0 0 30 30" width="30"><img src="" class="imgClass" id="img2"></div>
+                    <div class="h-10 w-10 fill-current text-gray-400 mt-3"><img src="" class="imgClass" id="img2"></div>
                     <p class="minValues" id="day2Min">Min</p>
                     <p class="maxValues" id="day2Max">Max</p>
                     <p class="HumidityValues" id="day2Humidity">Humidity</p>
@@ -75,7 +73,7 @@
                 <!--Day 3-->
                 <div class="flex flex-col items-center icons">
                     <p class="weather font-semibold text-lg" id="day3"></p>
-                    <div class="h-10 w-10 fill-current text-gray-400 mt-3" height="30" viewBox="0 0 30 30" width="30"><img src="" class="imgClass" id="img3"></div>
+                    <div class="h-10 w-10 fill-current text-gray-400 mt-3"><img src="" class="imgClass" id="img3"></div>
                     <p class="minValues" id="day3Min">Min</p>
                     <p class="maxValues" id="day3Max">Max</p>
                     <p class="HumidityValues" id="day3Humidity">Humidity</p>
@@ -84,7 +82,7 @@
                  <!--Day 4-->
                 <div class="flex flex-col items-center icons">
                     <p class="weather font-semibold text-lg" id="day4"></p>
-                    <div class="h-10 w-10 fill-current text-gray-400 mt-3" height="30" viewBox="0 0 30 30" width="30"><img src="" class="imgClass" id="img4"></div>
+                    <div class="h-10 w-10 fill-current text-gray-400 mt-3"><img src="" class="imgClass" id="img4"></div>
                     <p class="minValues" id="day4Min">Min</p>
                     <p class="maxValues" id="day4Max">Max</p>
                     <p class="HumidityValues" id="day4Humidity">Humidity</p>
@@ -93,7 +91,7 @@
                  <!--Day 5-->
                 <div class="flex flex-col items-center icons">
                     <p class="weather font-semibold text-lg" id="day5"></p>
-                    <div class="h-10 w-10 fill-current text-gray-400 mt-3" height="30" viewBox="0 0 30 30" width="30"><img src="" class="imgClass" id="img5"></div>
+                    <div class="h-10 w-10 fill-current text-gray-400 mt-3"><img src="" class="imgClass" id="img5"></div>
                     <p class="minValues" id="day5Min">Min</p>
                     <p class="maxValues" id="day5Max">Max</p>
                     <p class="HumidityValues" id="day5Humidity">Humidity</p>
@@ -102,17 +100,13 @@
                  <!--Day 6-->
                 <div class="flex flex-col items-center icons">
                     <p class="weather font-semibold text-lg" id="day6"></p>
-                    <div class="h-10 w-10 fill-current text-gray-400 mt-3" height="30" viewBox="0 0 30 30" width="30"><img src="" class="imgClass" id="img6"></div>
+                    <div class="h-10 w-10 fill-current text-gray-400 mt-3"><img src="" class="imgClass" id="img6"></div>
                     <p class="minValues" id="day6Min">Min</p>
                     <p class="maxValues" id="day6Max">Max</p>
                     <p class="HumidityValues" id="day6Humidity">Humidity</p>
                     <p class="windValues" id="day6Wind">Wind</p>
                 </div>
-            </div>
-
-
-            <!--test-->
-           
+            </div>           
 	</div>
 	
 </div>
