@@ -9,6 +9,8 @@ NA
 Usage
 To use this weather app, you can click into the search bar and input a city to view the current and upcoming 5 day weather forecast. You can also view the current search history.
 
+Link to deployed application: https://tonialtendorf.github.io/Challenge-6-WeatherApp/
+
 ![image](https://user-images.githubusercontent.com/117392154/217298230-f640bea5-f3f6-42ce-b355-ddc964a04f93.png)
 
 Credits
