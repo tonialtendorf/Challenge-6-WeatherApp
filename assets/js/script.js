@@ -137,6 +137,16 @@ for (let i = 0; i < arr.length; i++) {
   ul.addEventListener('click', function(event){
     event.preventDefault();
     cityInput.style.display.inline
-     document.getElementById("cityName").value =  event.target.id;
+    document.getElementById("cityName").value =  event.target.id;
      
 });
+
+document.getElementById("delete").addEventListener("click", restore, false);
+function restore() {
+  document.getElementById("delete").value = localStorage.getItem("delete");
+
+}
+
+
+
+
